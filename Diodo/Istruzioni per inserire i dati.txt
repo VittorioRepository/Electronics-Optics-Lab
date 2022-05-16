@@ -1,0 +1,14 @@
+ISTRUZIONI SU COME RIEMPIRE IL FILE CON I DATI
+
+Bisogna inserire tutti i dati in colonna, senza lasciare righe vuote, nel seguente ordine:
+
+	Valori della corrente I passante nel diodo 
+	Valori della tensione V ai capi del diodo
+	
+
+Se si vogliono già inserire gli errori:
+	
+	Valori della corrente I passante nel diodo
+	Errori sulle correnti
+	Valori della tensione V ai capi del diodo
+	Errori sulle tensioni

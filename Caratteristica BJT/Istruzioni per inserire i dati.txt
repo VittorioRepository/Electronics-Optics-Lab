@@ -1,0 +1,11 @@
+ISTRUZIONI SU COME RIEMPIRE IL FILE CON I DATI
+
+Bisogna inserire tutti i dati in colonna, senza lasciare righe vuote, nel seguente ordine:
+
+	Per la caratteristica I_c(V_ce):
+	
+	Tensioni
+	Errori sulle tensioni
+	Correnti 
+	Errori sulle correnti
+	

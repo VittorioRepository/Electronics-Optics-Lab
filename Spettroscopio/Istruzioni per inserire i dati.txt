@@ -1,0 +1,9 @@
+ISTRUZIONI SU COME RIEMPIRE IL FILE CON I DATI
+
+Bisogna inserire tutti i dati in colonna, senza lasciare righe vuote, nel seguente ordine:
+
+	lunghezze d'onda
+	errori su lunghezze d'onda
+	indice di rifrazione
+	errore su indice di rifrazione
+	
