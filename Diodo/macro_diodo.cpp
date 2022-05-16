@@ -198,7 +198,7 @@ void macro_diodo(){
         giv->SetMarkerStyle(21);
         giv->SetTitle("I(V) Silicio"); // Titolo del grafico
         giv->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
-        giv->GetXaxis()->SetTitle("Tensione [mV]");
+        giv->GetXaxis()->SetTitle("Tensione [V]");
 
         //Per impostare scala logaritmica:
         //su asse x:
@@ -243,7 +243,7 @@ void macro_diodo(){
         giv->SetMarkerStyle(21);
         giv->SetTitle("I(V) Led"); // Titolo del grafico
         giv->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
-        giv->GetXaxis()->SetTitle("Tensione [mV]");
+        giv->GetXaxis()->SetTitle("Tensione [V]");
 
         //Per impostare scala logaritmica:
         //su asse x:
