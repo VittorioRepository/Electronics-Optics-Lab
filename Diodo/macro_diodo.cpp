@@ -101,7 +101,7 @@ void macro_diodo(){
 
 
 
-// PARTE 3: STAMPA DEI DATI
+// PARTE 2: STAMPA DEI DATI
 
     // Decisione: stampare o no
     int decisione_stampa;
