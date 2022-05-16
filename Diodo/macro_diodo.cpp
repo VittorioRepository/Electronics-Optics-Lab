@@ -1,11 +1,10 @@
 /* 
 
 INTRODUZIONE:
-La macro è suddivisa in 4 parti:
+La macro è suddivisa in 3 parti:
     1) Lettura del file contenenti i dati
-    2) Elaborazione dei dati per ottenere tutte le grandezze necessarie all'analisi e i rispettivi errori
-    3) Stampa a schermo degli array se necessario
-    4) Plot della corrente in funzione della tensione I(V) e fit di I(V) con l'equazione di Shockley che caratterizza il diodo
+    2) Stampa a schermo degli array se necessario
+    3) Plot della corrente in funzione della tensione I(V) e fit di I(V) con l'equazione di Shockley che caratterizza il diodo
        Nel caso del diodo Led: plot I(V) e V(I), fit di V(I) con l'equazione di Shockley corretta con la caduta di tensione dovuta alla resistenza interna.
 
     Nella parte 1 è stato implementato un sistema che permette di scegliere da terminale quale file dati far leggere al programma e che analisi eseguire.
@@ -46,14 +45,6 @@ void macro_diodo(){
         exit(1);
     }
 
-    // Decisione errori
-
-    int decisione_errori = 0;
-    cout << "Hai già inserito gli errori su I e V nel file o vuoi che li calcoli io?" << endl;
-    cout << "Calcolali te:       inserire 0 e premere INVIO" << endl;
-    cout << "Li ho già inseriti: inserire 1 e premere INVIO" << endl;
-    cin >> decisione_errori;
-
 
     // Numero di dati raccolti
 
@@ -67,8 +58,7 @@ void macro_diodo(){
     }
 
 
-    if (decisione_errori==0) npoints = npoints/2;
-    else npoints = npoints/4;
+    npoints = npoints/4;
 
     cout << "\nSono state raccolte: " << npoints << " coppie di valori I-V" << endl << endl;
 
@@ -83,77 +73,35 @@ void macro_diodo(){
     float *err_V = new float[npoints];
 
 
-    if (decisione_errori==0){
-        int i=0;
-        while(!feof(input))
-        {
-            if(i<npoints)
-            {
-                fscanf(input,"%f\n",&temp_val);
-                I[i] = temp_val;
-            }
-            else if(i<2*npoints )
-            {
-                fscanf(input,"%f\n",&temp_val);
-                V[i-npoints] = temp_val;
-            }
-            ++i;
-        }
-    }
-
-    if (decisione_errori==1){
-        int i=0;
-        while(!feof(input))
-        {
-            if(i<npoints)
-            {
-                fscanf(input,"%f\n",&temp_val);
-                I[i] = temp_val;
-            }
-            else if(i<2*npoints)
-            {
-                fscanf(input,"%f\n",&temp_val);
-                err_I[i-npoints] = temp_val;
-            }
-            else if(i<3*npoints)
-            {
-                fscanf(input,"%f\n",&temp_val);
-                V[i-2*npoints] = temp_val;
-            }
-            else if(i<4*npoints)
-            {
-                fscanf(input,"%f\n",&temp_val);
-                err_V[i-3*npoints] = temp_val;
-            }
-            ++i;
-        }
-    }
-
-
-
-// PARTE 2: ERRORI 
-// Questa sezione parte solamente se non si sono già inseriti gli errori
-
-    // Calcolo errori a partire dalle fatidiche tabelle (si ipotizza di utilizzare il tester rosso)
-
-    if (decisione_errori==0)
+    int i=0;
+    while(!feof(input))
     {
-        for(int j=0; j<npoints; j++)
+        if(i<npoints)
         {
-            if (I[j] < 1) err_I[j] = I[j]*0.005 + 5e-3;
-            else          err_I[j] = I[j]*0.005 + 5e-2; 
-
-            if      (V[j] < 1)  err_V[j] = V[j]*0.001 + 5e-4;
-            else if (V[j] < 10) err_V[j] = V[j]*0.001 + 5e-3;
-            else                err_V[j] = V[j]*0.001 + 5e-2;
-            
+            fscanf(input,"%f\n",&temp_val);
+            I[i] = temp_val;
         }
+        else if(i<2*npoints)
+        {
+            fscanf(input,"%f\n",&temp_val);
+            err_I[i-npoints] = temp_val;
+        }
+        else if(i<3*npoints)
+        {
+            fscanf(input,"%f\n",&temp_val);
+            V[i-2*npoints] = temp_val;
+        }
+        else if(i<4*npoints)
+        {
+            fscanf(input,"%f\n",&temp_val);
+            err_V[i-3*npoints] = temp_val;
+        }
+        ++i;
     }
 
 
 
-
-// PARTE 4: STAMPA DEI DATI
+// PARTE 2: STAMPA DEI DATI
 
     // Decisione: stampare o no
     int decisione_stampa;
