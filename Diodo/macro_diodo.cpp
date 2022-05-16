@@ -215,7 +215,7 @@ void macro_diodo(){
         gvi->SetMarkerSize(0.6);
         gvi->SetMarkerStyle(21);
         gvi->SetTitle("V(I) Led"); // Titolo del grafico
-        gvi->GetYaxis()->SetTitle("Tensione V [mV]"); // Titoli degli assi
+        gvi->GetYaxis()->SetTitle("Tensione V [V]"); // Titoli degli assi
         gvi->GetXaxis()->SetTitle("Corrente I [mA]");
 
         //Per impostare scala logaritmica:
