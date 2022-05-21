@@ -199,7 +199,6 @@ void macro_rlc(){
         gG_f->Fit(function,"RM+");
         gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
 
-    
 
 
         //Frequenza di risonanza osservata e larghezza di banda
@@ -210,6 +209,49 @@ void macro_rlc(){
 
         cout << "\nFrequenza di Risonanza: " << f_ris << " +- " << err_f_ris << endl;
         cout << "Larghezza di Banda: " << Df << " +- " << err_Df << endl;
+
+
+
+        // Proviamo ora ad eseguire un fit con una funzione meno generale con più parametri (da cui è stata ricavata quella precedentemente utilizzata)
+        // Vuole quindi quasi essere un controllo
+
+        // Plot del guadagno G(f) 
+
+        TCanvas *G_f_2 = new TCanvas("RLC 2","Filtro passa banda 2",200,10,1000,700);
+        G_f_2->SetFillColor(0);
+        G_f_2->cd();
+        TGraphErrors *gG_f_2 = new TGraphErrors(npoints,frequenze,guadagno,err_frequenze,err_guadagno);
+
+        // Abbellimenti 
+
+        gG_f_2->SetMarkerSize(0.6);
+        gG_f_2->SetMarkerStyle(21);
+        gG_f_2->SetTitle("Passa Banda"); // Titolo del grafico
+        gG_f_2->GetYaxis()->SetTitle("Guadagno"); // Titoli degli assi
+        gG_f_2->GetXaxis()->SetTitle("Frequenza [Hz]");
+
+        //Per impostare scala logaritmica:
+        //su asse x:
+        G_f_2->SetLogx(1);
+        //su asse y:
+        //G_f_2->SetLogy(1);
+
+        gG_f_2->Draw("AP");
+
+        // Fit G(f) 
+        // G = R / sqrt(R^2+(2pi f L - 1/(2pi f C))^2)         con R[0], L[1], C[2] parametri     e pi = 3.14159
+
+        TF1 *function_2 = new TF1("Fit","[0]/pow(pow([0],2)+pow([1]*2*3.14159*x-1/([2]*2*3.14159*x),2),0.5)",0,1000001);
+        
+        function_2->SetParameter(0,270);
+        function_2->SetParameter(1,0.007);
+        function_2->SetParameter(2,30e-9);
+
+        function_2->SetLineColor(3);
+        gG_f_2->Fit(function_2,"RM+");
+        gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
+
+
 
 
 }
