@@ -75,7 +75,7 @@ void macro_bjt(){
         npoints = npoints/4;
 
 
-        cout << "\nRACCOLTA NUMERO" << k << ": sono state registrate: " << npoints << " coppie di valori I-V" << endl << endl;
+        cout << "\nRACCOLTA NUMERO " << k << ": sono state registrate: " << npoints << " coppie di valori I-V" << endl << endl;
 
 
         // Lettura del file
