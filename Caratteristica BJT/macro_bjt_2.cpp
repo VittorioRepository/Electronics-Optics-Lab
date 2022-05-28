@@ -24,8 +24,8 @@ void macro_bjt_2(){
         cin >> decisione_stampa;
 
     // Decisione Fit
-        cout << "\n\nVuoi fare un fit con una parabola o no?\n";
-        cout << "SI:   inserisci 0\nNO:   inserisci 1\n";
+        cout << "\n\nVuoi fare un fit?\n";
+        cout << "SI, con parabola:          inserisci 0\nSI, con funzione strana:   inserisci 1\nNO:                        inserisci 2\n";
         int decisione_fit = 2;
         cin >> decisione_fit;
 
@@ -132,6 +132,17 @@ void macro_bjt_2(){
 
     if (decisione_fit==0){
         TF1 *function_1 = new TF1("Fit","[0]+[1]*x+[2]*pow(x,2)",0,1000);
+            
+        function_1->SetParameter(0,0);
+        function_1->SetParameter(1,10);
+
+        function_1->SetLineColor(4); // Blu
+        gib->Fit(function_1,"RM+");
+        gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
+    }
+
+    if (decisione_fit==1){
+        TF1 *function_1 = new TF1("Fit","[0]*(1-exp(-x/[1]))",0,1000);
             
         function_1->SetParameter(0,0);
         function_1->SetParameter(1,10);
