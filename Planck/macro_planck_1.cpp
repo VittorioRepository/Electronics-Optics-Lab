@@ -18,15 +18,16 @@ void macro_planck_1()
     do
     {
         cout << "Quale set di dati vuoi analizzare?\n";
-        cout << "1:  INSERISCI 1\n2:  INSERISCI 2\n3:  INSERISCI 3\n4:  INSERISCI 4\n";       
+        cout << "1:  INSERISCI 1\n2:  INSERISCI 2\n3:  INSERISCI 3\n4:  INSERISCI 4\n5:  INSERISCI 5\n";       
         cin >> starter;
-        if (starter!=1 and starter !=2 and starter !=3 and starter!=4) cout << "Hai inserito un valore non consentito.\n";
-    } while (starter!=1 and starter !=2 and starter !=3 and starter!=4);
+        if (starter!=1 and starter !=2 and starter !=3 and starter!=4 and starter!=5) cout << "Hai inserito un valore non consentito.\n";
+    } while (starter!=1 and starter !=2 and starter !=3 and starter!=4 and starter!=5);
 
     if (starter==1) sprintf(filename, "data_1.txt");
     if (starter==2) sprintf(filename, "data_2.txt");
     if (starter==3) sprintf(filename, "data_3.txt");
     if (starter==4) sprintf(filename, "data_4.txt");
+    if (starter==5) sprintf(filename, "data_5.txt");
 
     cout << "\nHai scelto di analizzare: " << filename << endl;
 
@@ -118,8 +119,9 @@ void macro_planck_1()
     TGraphErrors *g_iv = new TGraphErrors(npoints,V,I,err_V,err_I);
 
     // Abbellimenti 
-    g_iv->SetMarkerSize(0.6);
-    g_iv->SetMarkerStyle(21);
+    g_iv->SetMarkerSize(0.6); // 0.6
+    g_iv->SetMarkerStyle(21); // 21
+    //g_iv->SetMarkerColor(2); // none
     g_iv->SetTitle("I(V)"); // Titolo del grafico
     g_iv->GetYaxis()->SetTitle("Corrente I [nA]"); // Titoli degli assi
     g_iv->GetXaxis()->SetTitle("Tensione V [mV]");
@@ -133,10 +135,10 @@ void macro_planck_1()
     g_iv->Draw("AP");
 
 
-
+    
     // I(V)    1
 
-    TF1 *function = new TF1("Fit","[0]",850,4000);
+    TF1 *function = new TF1("Fit","[0]+[1]*x",630,790);
     
     //function->SetParameter(0,0);
     //function->SetParameter(1,0);
@@ -148,6 +150,7 @@ void macro_planck_1()
     gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
 
     
+
 
 
 }

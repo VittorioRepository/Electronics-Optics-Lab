@@ -18,14 +18,15 @@ void macro_planck_2()
     do
     {
         cout << "Quale metodo per la tensione di contro-campo vuoi analizzare?\n";
-        cout << "1:  INSERISCI 1\n2:  INSERISCI 2\n3:  INSERISCI 3\n";       
+        cout << "1:  INSERISCI 1\n2:  INSERISCI 2\n3:  INSERISCI 3\n4:  INSERISCI 4\n";       
         cin >> starter;
-        if (starter!=1 and starter !=2 and starter !=3) cout << "Hai inserito un valore non consentito.\n";
-    } while (starter!=1 and starter !=2 and starter !=3);
+        if (starter!=1 and starter !=2 and starter !=3 and starter !=4) cout << "Hai inserito un valore non consentito.\n";
+    } while (starter!=1 and starter !=2 and starter !=3 and starter !=4);
 
     if (starter==1) sprintf(filename, "metodo_1.txt");
     if (starter==2) sprintf(filename, "metodo_2.txt");
     if (starter==3) sprintf(filename, "metodo_3.txt");
+    if (starter==4) sprintf(filename, "metodo_4.txt");
 
     cout << "\nHai scelto di analizzare: " << filename << endl;
 
