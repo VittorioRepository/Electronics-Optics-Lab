@@ -230,9 +230,9 @@ void macro_diodo(){
         // Fit V(I) nel caso del diodo LED
         // V=\eta V_T ln(I/I_s+1)+R*I    con I_s e \eta parametri    con V_T=k_bT/e=26 mV
 
-        TF1 *function_2 = new TF1("Fit","[0]*26*log(x/[1]+1)+[2]*x",0.0001,20);
+        TF1 *function_2 = new TF1("Fit","[0]*0.026*log(x/[1]+1)+[2]*x",0.0001,20);
 
-        function_2->SetParameter(0,1.5);
+        function_2->SetParameter(0,1500);
         function_2->SetParameter(1,1e-11);
         function_2->SetParameter(2,0);
 

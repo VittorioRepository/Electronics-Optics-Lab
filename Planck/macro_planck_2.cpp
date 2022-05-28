@@ -89,6 +89,14 @@ void macro_planck_2()
 
     fclose(input);
 
+    // Errori su V nel caso del metodo 4: calcolati tramite propagazione degli errori e inseriti qui brutalmente per fare prima
+
+    if(starter==4)
+    {
+        err_V[0] = 227.7/1000;
+        err_V[1] = 225.1/1000;
+        err_V[2] = 80.0/1000;
+    }
 
     // Passaggio da lambda a nu:     lambda*nu=c   
 
