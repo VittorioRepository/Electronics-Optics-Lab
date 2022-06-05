@@ -241,17 +241,20 @@ void macro_rlc(){
         // Fit G(f) 
         // G = R / sqrt(R^2+(2pi f L - 1/(2pi f C))^2)         con R[0], L[1], C[2] parametri     e pi = 3.14159
 
-        TF1 *function_2 = new TF1("Fit","[0]/pow(pow([0],2)+pow([1]*2*3.14159*x-1/([2]*2*3.14159*x),2),0.5)",0,1000001);
+        TF1 *function_2 = new TF1("Fit","[0]/pow(pow([0]+[3],2)+pow([1]*2*3.14159*x-1/([2]*2*3.14159*x),2),0.5)",0,1000001);
         
-        function_2->SetParameter(0,270);
-        function_2->SetParameter(1,0.007);
+        function_2->SetParameter(0,300);
+        function_2->SetParameter(1,0.006);
         function_2->SetParameter(2,30e-9);
+        function_2->SetParameter(3,20);
 
         function_2->SetLineColor(3);
         gG_f_2->Fit(function_2,"RM+");
         gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
 
-
+        float C_2 = function_2->GetParameter(2);
+        float L_2 = function_2->GetParameter(1);
+        cout << "\n\nFrequenza di risonanza nuova: " << 1/(2*3.14159*sqrt(L_2*C_2)) << "\n\n";
 
 
 }
