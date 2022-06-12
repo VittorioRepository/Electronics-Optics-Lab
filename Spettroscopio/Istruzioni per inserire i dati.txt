@@ -7,3 +7,9 @@ Bisogna inserire tutti i dati in colonna, senza lasciare righe vuote, nel seguen
 	indice di rifrazione
 	errore su indice di rifrazione
 	
+	
+	
+Per i dati dello spettrofotometro:
+
+	lunghezza d'onda
+	intensità luminosa

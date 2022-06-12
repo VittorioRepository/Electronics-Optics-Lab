@@ -160,7 +160,7 @@ void macro_bjt(){
     giv->SetMarkerStyle(21);
     giv->SetTitle("Ic(Vce)"); // Titolo del grafico
     giv->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
-    giv->GetXaxis()->SetTitle("Tensione [mV]");
+    giv->GetXaxis()->SetTitle("Tensione [V]");
     giv->Draw("AP");
     
 
@@ -168,11 +168,6 @@ void macro_bjt(){
 
 
     // Parte 4: Ib(Vbe)
-
-    float *Ib = new float[special_counter];
-    float *err_Ib = new float[special_counter];
-    float *Vbe = new float[special_counter];
-    float *err_Vbe = new float[special_counter];
     
     sprintf(filename, "data_Ib_Vbe.txt");
     FILE *input = fopen(filename, "r" );
@@ -204,6 +199,12 @@ void macro_bjt(){
         // Lettura del file
 
         rewind(input);
+
+        float *Ib = new float[npoints];
+        float *err_Ib = new float[npoints];
+        float *Vbe = new float[npoints];
+        float *err_Vbe = new float[npoints];
+
 
         i=0;
         while(!feof(input))
@@ -258,7 +259,7 @@ void macro_bjt(){
         giv_2->SetMarkerStyle(21);
         giv_2->SetTitle("Ib(Vbe)"); // Titolo del grafico
         giv_2->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
-        giv_2->GetXaxis()->SetTitle("Tensione [mV]");
+        giv_2->GetXaxis()->SetTitle("Tensione [V]");
         giv_2->Draw("AP");
 
 

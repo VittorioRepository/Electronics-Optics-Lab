@@ -63,6 +63,7 @@ void macro_bjt_2(){
     float *err_b = new float[npoints];
 
 
+
     cout << "\nSono state registrate: " << npoints << " coppie di valori fattore di amplificazione - corrente" << endl << endl;
 
 
@@ -125,8 +126,8 @@ void macro_bjt_2(){
     TGraphErrors *gib = new TGraphErrors(npoints,I,b,err_I,err_b);
     gib->SetMarkerSize(0.6);
     gib->SetMarkerStyle(21);
-    gib->SetTitle("Ic(Vce)"); // Titolo del grafico
-    gib->GetYaxis()->SetTitle("Corrente #beta"); // Titoli degli assi
+    gib->SetTitle("#beta(Ib)"); // Titolo del grafico
+    gib->GetYaxis()->SetTitle("Fattore #beta"); // Titoli degli assi
     gib->GetXaxis()->SetTitle("Corrente [mA]");
     gib->Draw("AP");
 
