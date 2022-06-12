@@ -124,7 +124,8 @@ void macro_bjt_2(){
     bi->cd();
 
     TGraphErrors *gib = new TGraphErrors(npoints,I,b,err_I,err_b);
-    gib->SetMarkerSize(0.6);
+    gib->SetMarkerSize(0.8);
+    gib->SetMarkerColor(2);
     gib->SetMarkerStyle(21);
     gib->SetTitle("#beta(Ib)"); // Titolo del grafico
     gib->GetYaxis()->SetTitle("Fattore #beta"); // Titoli degli assi

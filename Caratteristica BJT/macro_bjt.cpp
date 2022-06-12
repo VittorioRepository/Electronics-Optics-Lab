@@ -156,8 +156,9 @@ void macro_bjt(){
     iv->cd();
 
     TGraphErrors *giv = new TGraphErrors(special_counter,V_2,I_2,err_V_2,err_I_2);
-    giv->SetMarkerSize(0.6);
+    giv->SetMarkerSize(0.8);
     giv->SetMarkerStyle(21);
+    giv->SetMarkerColor(4);
     giv->SetTitle("Ic(Vce)"); // Titolo del grafico
     giv->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
     giv->GetXaxis()->SetTitle("Tensione [V]");
@@ -255,7 +256,8 @@ void macro_bjt(){
         iv_2->cd();
 
         TGraphErrors *giv_2 = new TGraphErrors(npoints,Vbe,Ib,err_Vbe,err_Ib);
-        giv_2->SetMarkerSize(0.6);
+        giv_2->SetMarkerSize(0.8);
+        giv_2->SetMarkerColor(2);
         giv_2->SetMarkerStyle(21);
         giv_2->SetTitle("Ib(Vbe)"); // Titolo del grafico
         giv_2->GetYaxis()->SetTitle("Corrente I [mA]"); // Titoli degli assi
