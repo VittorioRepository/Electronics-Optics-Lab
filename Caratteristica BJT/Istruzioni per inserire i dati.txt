@@ -9,3 +9,21 @@ Bisogna inserire tutti i dati in colonna, senza lasciare righe vuote, nel seguen
 	Correnti 
 	Errori sulle correnti
 	
+	
+Per Ib(Vbe) totale:
+	Tensioni
+	Errori tensioni
+	Correnti 
+	Errori correnti
+	
+Per Ib(Vbe) singoli:
+	Correnti 
+	Errori correnti 
+	Tensioni
+	Errori tensioni
+	
+Per beta(Ic):
+	Correnti
+	Errori correnti
+	Beta
+	Errori Beta

@@ -95,9 +95,10 @@ void amplificatore()
     TGraphErrors *g_it = new TGraphErrors(npoints,f,Av,err_f,err_Av);
 
     // Abbellimenti 
-    g_it->SetMarkerSize(0.6);
+    g_it->SetMarkerSize(0.9);
+    g_it->SetMarkerColor(2);
     g_it->SetMarkerStyle(21);
-    g_it->SetTitle("Av(f)"); // Titolo del grafico
+    g_it->SetTitle("Amplificazione in funzione della frequenza"); // Titolo del grafico
     g_it->GetYaxis()->SetTitle("Guadagno Av"); // Titoli degli assi
     g_it->GetXaxis()->SetTitle("Frequenza [Hz]");
 
@@ -113,16 +114,18 @@ void amplificatore()
 
     // I(theta)   
 
-    TF1 *function = new TF1("Fit","[0]+[1]*pow(x-[2],-1)+[3]*pow(x-[2],-2)",0,1e7);
+    //TF1 *function = new TF1("Fit","[0]+[1]*pow(x-[2],-1)+[3]*pow(x-[2],-2)",0,1e7);
     
-    //function->SetParameter(0,0);
+    //TF1 *function = new TF1("Fit","1/sqrt(1+pow(x/[0],2))",0,1e7);
+    
+    //function->SetParameter(0,1e-5);
     //function->SetParameter(1,0);
     //function->SetParameter(2,0);
 
 
-    function->SetLineColor(4); // Blu
-    g_it->Fit(function,"RM+");
-    gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
+    //function->SetLineColor(4); // Blu
+    //g_it->Fit(function,"RM+");
+    //gStyle->SetOptFit(1); //print the information on fit parameters results in the statistics box directly on the TGraph
 
 
 
